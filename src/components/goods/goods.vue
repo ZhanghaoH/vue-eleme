@@ -71,30 +71,30 @@ export default {
       foodsScroll: null,
       listHeight: [],
       scrollY: 0,
-      isSelect: false
-      // curIndex: 0
+      isSelect: false,
+      curIndex: 0
     }
   },
-  // watch: {
-  //   scrollY () {
-  //     this._calcCurIndex()
+  watch: {
+    scrollY () {
+      this._calcCurIndex()
+    }
+  },
+  // computed: {
+  //   curIndex () {
+  //     let index = 0
+  //     let heightArr = this.listHeight
+  //     for (let i = 0; i < heightArr.length; i++) {
+  //       let topBorder = heightArr[i]
+  //       let botBorder = heightArr[i + 1]
+  //       if (botBorder && topBorder <= this.scrollY && botBorder > this.scrollY) {
+  //         index = i
+  //         return index
+  //       }
+  //     }
+  //     return 0
   //   }
   // },
-  computed: {
-    curIndex () {
-      let index = 0
-      let heightArr = this.listHeight
-      for (let i = 0; i < heightArr.length; i++) {
-        let topBorder = heightArr[i]
-        let botBorder = heightArr[i + 1]
-        if (botBorder && topBorder <= this.scrollY && botBorder > this.scrollY) {
-          index = i
-          return index
-        }
-      }
-      return 0
-    }
-  },
   methods: {
     _initScroll () {
       this.menuScroll = new BScroll(this.$refs.menuWr, {
@@ -118,34 +118,37 @@ export default {
         this.listHeight.push(height)
       }
     },
-    // _calcCurIndex () {
-    //   let index = 0
-    //   let heightArr = this.listHeight
-    //   for (let i = 0; i < heightArr.length; i++) {
-    //     let topBorder = heightArr[i]
-    //     let botBorder = heightArr[i + 1]
-    //     if (botBorder && topBorder <= this.scrollY && botBorder > this.scrollY) {
-    //       index = i
-    //     }
-    //   }
-    //   this.curIndex = index
-    // },
+    _calcCurIndex () {
+      if (!this.isSelect) {
+        let index = 0
+        let heightArr = this.listHeight
+        for (let i = 0; i < heightArr.length; i++) {
+          let topBorder = heightArr[i]
+          let botBorder = heightArr[i + 1]
+          if (botBorder && topBorder <= this.scrollY && botBorder > this.scrollY) {
+            index = i
+          }
+        }
+        this.curIndex = index
+      } else {
+
+      }
+    },
     selectMenu (i, e) {
       if (!e._constructed) {
         // 避免双重派发点击事件 尽管实际应用并没有这情况 应该是作者优化过
         return
       }
-      // this._calcCurIndex()
-      let scrollGoodsElement = this.$refs.goodsItem[i]
-      this.foodsScroll.scrollToElement(scrollGoodsElement, 500)
-      let scrollMenuElement = this.$refs.menuItem[i]
-      this.menuScroll.scrollToElement(scrollMenuElement, 500)
       this.isSelect = true
-
-      // this.$nextTick(() => {
-      //   this.curIndex = i
-      // })
-      // this.curIndex = index 何必要直接重置 直接滑动到相应视图就好
+      this._calcCurIndex()
+      let scrollGoodsElement = this.$refs.goodsItem[i]
+      this.foodsScroll.scrollToElement(scrollGoodsElement, 300)
+      let scrollMenuElement = this.$refs.menuItem[i]
+      this.menuScroll.scrollToElement(scrollMenuElement, 300)
+      setTimeout(() => {
+        this.isSelect = false
+        this.curIndex = i
+      }, 300)
     }
   }
 }
@@ -153,6 +156,7 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../../common/stylus/mixin'
+
 .goods-page
   display flex
   position absolute
@@ -161,10 +165,12 @@ export default {
   bottom 48px
   width 100%
   overflow hidden
+
   .menu-wr
     flex 0 0 80px
     width 80px
     background-color #f3f5f7
+
     // overflow auto
     // -webkit-overflow-scrolling touch // IOS系统
     // overflow-scrolling touch // 安卓系统
@@ -172,17 +178,20 @@ export default {
       font-size 12px
       line-height 14px
       font-weight normal
+
       .menu-item
         display table
         height 54px
         width 56px
         padding 0 12px
+
         .text
           display table-cell
           vertical-align middle
           text-align center
           // width 56px
           border-1px(rgba(7, 17, 27, 0.1))
+
         .icon
           display inline-block
           width 12px
@@ -191,29 +200,39 @@ export default {
           background-size 12px 12px
           background-repeat no-repeat
           vertical-align top
+
           &.decrease
             bg-image('decrease_3')
+
           &.discount
             bg-image('discount_3')
+
           &.guarantee
             bg-image('guarantee_3')
+
           &.invoice
             bg-image('invoice_3')
+
           &.special
             bg-image('special_3')
+
         &:last-child
           .text
             border-none()
+
         &.active
           font-weight 700
           background-color #fff
           position relative
           margin-top -1px
           z-index 10
+
           .text
             border-none()
+
   .goods-wr
     flex auto
+
     // overflow auto
     // -webkit-overflow-scrolling touch // IOS系统
     // overflow-scrolling touch // 安卓系统
@@ -225,36 +244,47 @@ export default {
       height 26px
       color rgb(147, 153, 159)
       padding-left 14px
+
     .foods-list
       background-color #ffffff
       margin 0 18px
+
       li
         padding 18px 0
         display flex
         border-1px(rgba(7, 17, 27, 0.1))
+
         &:last-child
           border-none()
+
         .avatar
           flex none
+
         .cnt
           margin-left 10px
+
           .name
             margin-top 2px
             font-size 14px
             line-height 14px
+
           .desc, .extra, .price
             font-size 10px
             margin-top 8px
             line-height 10px
             color rgb(147, 153, 159)
+
           .desc
             line-height 12px
+
           .price
             margin-top 0
+
             .text-price
               font-size 10pxc
               display inline-block
               vertical-align text-top
+
               &.text-price__strong
                 color rgb(240, 20, 20)
                 line-height 24px
