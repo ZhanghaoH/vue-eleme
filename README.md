@@ -2,9 +2,11 @@
 
 > A Vue.js project
 
+* 学习到`7-15`，即将进行购物车添加及商品数量增加操作
+
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 

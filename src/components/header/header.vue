@@ -97,35 +97,28 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import '../../common/stylus/mixin.styl'
-
 .header
   color #ffffff
   position relative
   background-color rgba(7, 17, 27, 0.5)
   overflow hidden
-
   .content-wrapper
     padding 24px 12px 18px 24px
     font-size 0
     position relative
-
     .avatar
       width 64px
       height 64px
       display inline-block
-
       > img
         border-radius 4px
-
     .content
       display inline-block
       margin-left 16px
       padding-top 2px
       vertical-align top
-
       .title
         margin 2px 0 8px 0
-
         .brand
           display inline-block
           width 30px
@@ -134,18 +127,15 @@ export default {
           background-size 30px 18px
           background-repeat no-repeat
           vertical-align top
-
         .name
           font-size 16px
           margin-left 6px
           line-height 18px
           font-weight bold
-
       .desc
         font-size 12px
         line-height 12px
         margin-bottom 10px
-
       .support
         .icon
           display inline-block
@@ -154,27 +144,20 @@ export default {
           margin-right 4px
           background-size 12px 12px
           background-repeat no-repeat
-
           &.decrease
             bg-image('decrease_1')
-
           &.discount
             bg-image('discount_1')
-
           &.guarantee
             bg-image('guarantee_1')
-
           &.invoice
             bg-image('invoice_1')
-
           &.special
             bg-image('special_1')
-
         .text
           font-size 10px
           line-height 12px
           vertical-align top
-
     .support-count
       position absolute
       right 12px
@@ -185,14 +168,11 @@ export default {
       background-color rgba(0, 0, 0, 0.2)
       border-radius 12px
       font-size 10px
-
       .count
         vertical-align top
-
       .iconfont-keyboard_arrow_right
         margin-left 2px
         line-height 24px
-
   .bulletin-wrapper
     height 28px
     line-height 28px
@@ -203,7 +183,6 @@ export default {
     white-space nowrap
     position relative
     background-color rgba(7, 17, 27, 0.2)
-
     .bulletin-tit
       margin-right 4px
       display inline-block
@@ -214,18 +193,15 @@ export default {
       background-repeat no-repeat
       vertical-align top
       margin-top 8px
-
     .bulletin-cnt
       font-size 10px
       vertical-align top
-
     i
       font-size 10px
       position absolute
       right 12px
       top 50%
       transform translateY(-50%)
-
   .bg
     position absolute
     top 0
@@ -234,7 +210,6 @@ export default {
     height 100%
     z-index -1
     filter blur(10px)
-
   .detail
     position fixed
     top 0
@@ -245,47 +220,37 @@ export default {
     overflow auto
     background-color rgba(7, 17, 27, 0.8)
     -webkit-backdrop-filter blur(10px)
-
     // filter blur(10px)
     .detail-wrapper
       min-height 100%
       width 100%
       position relative
-
       .detail-main
         margin-top 64px
         padding-bottom 80px
-
         .name
           font-weight 700
           font-size 16px
           text-align center
           line-height 12px
-
         .star-wrapper
           margin-top 16px
-
         .supports-wrapper
           text-align center
           margin 28px auto 0
           width 80%
-
           .supports-list
             font-size 12px
             line-height 12px
             margin-top 24px
-
             .supports-item
               padding-left 16px
               margin-bottom 12px
               text-align left
-
             &:last-child
               margin-bottom 0
-
             .text
-              vertical-align top
-
+              vertical-align text-top
             .icon
               display inline-block
               width 16px
@@ -293,38 +258,29 @@ export default {
               margin-right 6px
               background-size 16px 16px
               background-repeat no-repeat
-
               &.decrease
                 bg-image('decrease_2')
-
               &.discount
                 bg-image('discount_2')
-
               &.guarantee
                 bg-image('guarantee_2')
-
               &.invoice
                 bg-image('invoice_2')
-
               &.special
                 bg-image('special_2')
-
         .bulletins-wr
           width 80%
           margin 28px auto 0
-
           .text
             padding 0 12px
             margin-top 24px
             line-height 24px
             font-size 12px
             text-align left
-
     .detail-close
       width 32px
       height 32px
       margin -64px auto 0 auto
-
     .iconfont-close
       position relative
       color rgba(255, 255, 255, 0.5)

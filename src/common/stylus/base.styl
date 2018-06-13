@@ -2,10 +2,8 @@ html, body
   font-weight 200
   font-size 14px
   font-family 'pingfang SC', 'arial', 'microsoft yahei'
-
 .clearfix
   display inline-block
-
   &::after
     content ''
     display block
@@ -13,46 +11,48 @@ html, body
     line-height 0
     clear both
     visibility hidden
-
 .text-del
   text-decoration line-through
-
 ::-webkit-scrollbar
   display none
-
 .avatar
   width 64px
   height 64px
   display inline-block
-
   > img
     width 64px
     height 64px
     border-radius 4px
-
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5)
   .border-1px
     &::after
       transform scaleY(0.7)
       -webkit-transform scaleY(0.7)
-
+  .border-r-1px
+    &::after
+      transform scaleY(0.7)
+      -webkit-transform scaleY(0.7)
 @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2)
   .border-1px
     &::after
       transform scaleY(0.5)
       -webkit-transform scaleY(0.5)
-
+  .border-r-1px
+    &::after
+      transform scaleY(0.5)
+      -webkit-transform scaleY(0.5)
 @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3)
   .border-1px
     &::after
       transform scaleY(0.3333)
       -webkit-transform scaleY(0.3333)
-
+  .border-r-1px
+    &::after
+      transform scaleY(0.3333)
+      -webkit-transform scaleY(0.3333)
 .fade-enter, .fade-leave-to
   opacity 0
-
 .fade-enter-active
   transition all 0.5s
-
 .fade-leave-active
   transition all 0.5s
